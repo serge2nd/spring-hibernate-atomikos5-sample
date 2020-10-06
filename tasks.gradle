@@ -1,0 +1,29 @@
+import static java.lang.System.getProperty as sys
+
+shadowJar {
+    mergeServiceFiles {
+        include 'META-INF/services', 'META-INF/spring*'
+    }
+}
+
+task testJar(type: ShadowJar) {
+    from sourceSets.test.output, sourceSets.test.compileClasspath - sourceSets.main.compileClasspath - sourceSets.main.output
+    configurations = [project.configurations.testJar]
+    classifier 'tests'
+}
+
+project.tasks.withType(JavaCompile) { //noinspection GroovyAssignabilityCheck,GroovyAccessibility
+    options.release = extJavaVersion
+    options.encoding 'UTF-8'
+}
+
+jar { dependsOn(shadowJar); enabled = false }
+
+test {
+    useJUnitPlatform()
+    systemProperties extTests
+        .collectEntries {[((String)it): sys((String)it)]}
+        .findAll {k, v -> v != null}
+}
+
+wrapper { gradleVersion = sys('gradle.version', '6.6.1'); distributionType = 'ALL' }

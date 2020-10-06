@@ -1,0 +1,23 @@
+import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
+import com.github.jengelman.gradle.plugins.shadow.ShadowPlugin
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+group 'ru.serge2nd'
+version '0.5.0-SNAPSHOT'
+apply plugin: JavaPlugin
+apply plugin: ShadowPlugin
+apply plugin: DependencyManagementPlugin
+ext.ShadowJar = ShadowJar
+
+sourceSets.forEach extendClassPaths([
+    'compileClasspath',
+    'annotationProcessorPath'
+], sourceSets.main.annotationProcessorPath)
+
+apply from: 'ext.gradle'
+apply from: 'dependencies.gradle'
+apply from: 'tasks.gradle'
+
+static extendClassPaths(classPaths, extension) {{
+    it -> classPaths.forEach {String cp -> it[cp] += extension}
+}}

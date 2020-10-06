@@ -1,0 +1,30 @@
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://dry-sierra-43302.herokuapp.com/repo/' }
+}
+dependencyManagement {
+    imports { mavenBom springBom }
+}
+configurations {
+    testJar
+}
+dependencies {
+    implementation 'ru.serge2nd:bunch-of-crafts:0.9.0-SNAPSHOT',
+            'org.springframework.data:spring-data-jpa',
+            'org.hibernate:hibernate-core',
+            'org.hibernate.validator:hibernate-validator',
+            'com.atomikos:transactions-jdbc',
+            'com.atomikos:transactions-jta',
+            'ch.qos.logback:logback-classic'
+    testImplementation 'org.springframework:spring-test',
+            'org.junit.jupiter:junit-jupiter-engine',
+            'org.junit.jupiter:junit-jupiter-params',
+            'org.mockito:mockito-junit-jupiter',
+            'com.oracle.ojdbc:ojdbc8',
+            'org.postgresql:postgresql',
+            'com.h2database:h2'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testJar "org.junit.platform:junit-platform-console-standalone:$extJunitConsoleVersion"
+}
