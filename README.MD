@@ -7,16 +7,20 @@ A demo Spring configuration consisting of the following parts:
 - JDK >=11 to build, JRE >=11 to run
 
 ## Build & Run
-**Note:** see the information in the `init.gradle` before the build.
+**Note:** see the information in the [`init.d/README.MD`][100] before executing any Gradle tasks.
 
 Run the following to build the fat JAR (with dependencies):
+```shell script
+./gradlew clean build -x test
 ```
-./gradlew clean build
-```
+Remove the last option if the tests must be run during the build.
+
 Add `testJar` to the end if you also want to build the tests JAR.
 
 The default tests (on in-memory db) or any custom tests can be run by executing something like
-```
+```shell script
 java -cp fat.jar:tests.jar org.junit.platform.console.ConsoleLauncher -p ru.serge2nd
 ```
 Run the `org.junit.platform.console.ConsoleLauncher` without arguments to see the available options.
+
+[100]: init.d/README.MD

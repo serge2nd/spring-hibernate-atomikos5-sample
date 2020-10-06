@@ -4,7 +4,7 @@ ext {
     extTests = ['OracleDbTest', 'PostgresDbTest']
 }
 ext['lombok.version']              = '1.18.12'
-ext['hibernate.version']           = '5.4.20.Final'
+ext['hibernate.version']           = '5.4.21.Final'
 ext['hibernate-validator.version'] = '6.1.5.Final'
 ext['atomikos.version']            = '5.0.8'
 ext['ojdbc.version']               = '19.3.0.0'

@@ -26,4 +26,4 @@ test {
         .findAll {k, v -> v != null}
 }
 
-wrapper { gradleVersion = sys('gradle.version', '6.6.1'); distributionType = 'ALL' }
+wrapper { gradleVersion = sys('gradle.version'); distributionType = 'ALL' }

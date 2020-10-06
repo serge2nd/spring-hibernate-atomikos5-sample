@@ -62,7 +62,7 @@ public class Route implements Identifiable<Long> {
         r.getRouteStops().add(rs); rs.setRoute(r); return rs;
     }
     private static RouteStop doRemoveRouteStop(Route r, RouteStop rs) {
-        for (Iterator<RouteStop> it = r.getRouteStops().iterator(); it.hasNext();)
+        for (var it = r.getRouteStops().iterator(); it.hasNext();)
             if (sameIndexes(rs, it.next())) {
                 it.remove(); rs.setRoute(null); return rs; }
         throw new IllegalArgumentException(format("route stop %s not found", rs.getIndexNumber()));
