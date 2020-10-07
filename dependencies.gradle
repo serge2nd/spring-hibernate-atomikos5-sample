@@ -1,7 +1,15 @@
+import static java.lang.System.getenv
+
 repositories {
     mavenCentral()
     mavenLocal()
-    maven { url 'https://dry-sierra-43302.herokuapp.com/repo/' }
+    maven {
+        url 'https://maven.pkg.github.com/serge2nd/maven-repo'
+        credentials {
+            username = 'serge2nd'
+            password = getenv('GITHUB_TOKEN')
+        }
+    }
 }
 dependencyManagement {
     imports { mavenBom springBom }
