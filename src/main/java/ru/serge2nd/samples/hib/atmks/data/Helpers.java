@@ -4,8 +4,11 @@ import java.util.Iterator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import static java.lang.invoke.MethodHandles.lookup;
+import static ru.serge2nd.ObjectAssist.errNotInstantiable;
+
 public class Helpers {
-    private Helpers() {}
+    private Helpers() { throw errNotInstantiable(lookup().lookupClass()); }
 
     public static final int STRMAXLEN = 2000;
 
