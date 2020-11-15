@@ -18,11 +18,11 @@ import java.util.List;
 import java.util.Map;
 
 import static java.sql.Connection.TRANSACTION_READ_COMMITTED;
-import static java.util.Objects.requireNonNull;
 import static org.hibernate.cfg.AvailableSettings.JPA_VALIDATION_FACTORY;
 import static org.hibernate.cfg.AvailableSettings.JTA_PLATFORM;
 import static org.springframework.orm.jpa.vendor.Database.H2;
 import static org.springframework.orm.jpa.vendor.Database.valueOf;
+import static ru.serge2nd.ObjectAssist.nullSafe;
 import static ru.serge2nd.bean.PropertyUtil.propertyOrigin;
 import static ru.serge2nd.bean.PropertyUtil.propertySuffixOrigin;
 import static ru.serge2nd.stream.util.CollectingOptions.UNMODIFIABLE;
@@ -69,8 +69,8 @@ public class DataConfig {
         jtaDs.setDefaultIsolationLevel(env.getProperty(JTA_ISOLATION, Integer.class, TRANSACTION_READ_COMMITTED));
 
         jtaDs.setXaProperties(HardProperties.of(xaProps()));
-        jtaDs.setMaxPoolSize            (requireNonNull(env.getProperty(JTA_MAX_POOL, Integer.class), "no max pool size"));
-        jtaDs.setBorrowConnectionTimeout(requireNonNull(env.getProperty(JTA_CONN_TIMEOUT, Integer.class), "no connection timeout"));
+        jtaDs.setMaxPoolSize            (nullSafe(env.getProperty(JTA_MAX_POOL, Integer.class), "no max pool size"));
+        jtaDs.setBorrowConnectionTimeout(nullSafe(env.getProperty(JTA_CONN_TIMEOUT, Integer.class), "no connection timeout"));
         return jtaDs;
     }
 

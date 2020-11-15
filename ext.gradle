@@ -1,13 +1,15 @@
 ext {
-    extJavaVersion = 11
+    extJavaVersion = 15
+    extJavaCompilerArgs = ['--enable-preview']
+    extJvmArgs = ['--enable-preview']
     extJunitConsoleVersion = '1.6.2'
     extTests = ['OracleDbTest', 'PostgresDbTest']
 }
 ext['lombok.version']              = '1.18.12'
-ext['hibernate.version']           = '5.4.21.Final'
-ext['hibernate-validator.version'] = '6.1.5.Final'
+ext['hibernate.version']           = '5.4.23.Final'
+ext['hibernate-validator.version'] = '6.1.6.Final'
 ext['atomikos.version']            = '5.0.8'
-ext['ojdbc.version']               = '19.3.0.0'
-ext['postgresql.version']          = '42.2.16'
-ext['junit-jupiter.version']       = '5.6.2'
-ext['mockito.version']             = '3.5.5'
+ext['ojdbc.version']               = '19.8.0.0'
+ext['postgresql.version']          = '42.2.18'
+ext['junit-jupiter.version']       = '5.7.0'
+ext['mockito.version']             = '3.6.0'

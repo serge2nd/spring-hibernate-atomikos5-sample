@@ -12,7 +12,7 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 import javax.transaction.TransactionManager;
 import javax.transaction.UserTransaction;
 
-import static java.util.Objects.requireNonNull;
+import static ru.serge2nd.ObjectAssist.nullSafe;
 
 /** Transaction configuration */
 @Configuration
@@ -27,7 +27,7 @@ public class TxConfig extends AbstractJtaPlatform {
     @Bean(initMethod = "init", destroyMethod = "close")
     @SuppressWarnings("ContextJavaBeanUnresolvedMethodsInspection")
     TransactionManager userTransactionManager() {
-        requireNonNull(userTransactionService(), "no user transaction service");
+        nullSafe(userTransactionService(), "no user transaction service");
         var utm = new UserTransactionManager();
 
         utm.setStartupTransactionService(false);

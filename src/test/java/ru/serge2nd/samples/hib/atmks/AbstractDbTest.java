@@ -28,10 +28,10 @@ abstract class AbstractDbTest {
     @Test
     void testSimpleRead() {
         // WHEN
-        Route route = t.fromTxSession((session, tx) -> session.createQuery(
-                "select r from Route r " +
-                "left join fetch r.routeStops " +
-                "where r.id = :id", Route.class)
+        Route route = t.fromTxSession((session, tx) -> session.createQuery("""
+                select r from Route r
+                left join fetch r.routeStops
+                where r.id = :id""", Route.class)
                 .setParameter("id", 200L)
                 .setReadOnly(true)
                 .getSingleResult());
@@ -65,10 +65,10 @@ abstract class AbstractDbTest {
                         .build()));
 
         // WHEN
-        Route route = t.fromTxSession((session, tx) -> session.createQuery(
-                "select r from Route r " +
-                "left join fetch r.routeStops " +
-                "where r.id = :id", Route.class)
+        Route route = t.fromTxSession((session, tx) -> session.createQuery("""
+                select r from Route r
+                left join fetch r.routeStops
+                where r.id = :id""", Route.class)
                 .setParameter("id", id)
                 .setReadOnly(true)
                 .getSingleResult());

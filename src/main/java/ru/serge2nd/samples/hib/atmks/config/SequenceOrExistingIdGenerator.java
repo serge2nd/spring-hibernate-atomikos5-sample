@@ -9,14 +9,9 @@ import java.io.Serializable;
 
 public class SequenceOrExistingIdGenerator extends SequenceStyleGenerator {
     @Override
-    public Serializable generate(SharedSessionContractImplementor session, Object entity) throws HibernateException {
-        Serializable id;
-
-        if (entity instanceof Identifiable && (
-            id = ((Identifiable<?>)entity).getId()) != null) {
-            return id;
-        }
-
-        return super.generate(session, entity);
+    public Serializable generate(SharedSessionContractImplementor session, Object e) throws HibernateException {
+        if (e instanceof Identifiable<?> i)
+            return i.getId();
+        return super.generate(session, e);
     }
 }

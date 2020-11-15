@@ -3,6 +3,7 @@ import static java.lang.System.getProperty as sys
 project.tasks.withType(JavaCompile) { //noinspection GroovyAssignabilityCheck,GroovyAccessibility
     options.release = extJavaVersion
     options.encoding 'UTF-8'
+    options.compilerArgs += extJavaCompilerArgs
 }
 shadowJar {
     mergeServiceFiles {
@@ -13,6 +14,7 @@ jar { dependsOn(shadowJar); enabled = false }
 
 test {
     useJUnitPlatform()
+    jvmArgs += extJvmArgs
     systemProperties extTests.collectEntries {
         String name -> [(name): sys(name)] }
         .findAll { k, v -> v != null }

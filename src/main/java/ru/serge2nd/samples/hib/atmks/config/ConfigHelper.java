@@ -11,8 +11,6 @@ public class ConfigHelper {
     private ConfigHelper() { throw errNotInstantiable(lookup().lookupClass()); }
 
     public static String[] propertyNames(PropertySource<?> ps) {
-        return ps instanceof EnumerablePropertySource
-                ? ((EnumerablePropertySource<?>)ps).getPropertyNames()
-                : EMPTY_STRING_ARRAY;
+        return ps instanceof EnumerablePropertySource<?> eps ? eps.getPropertyNames() : EMPTY_STRING_ARRAY;
     }
 }

@@ -19,7 +19,7 @@ Add `testJar` to the end if you also want to build the tests JAR.
 
 The default tests (on in-memory db) or any custom tests can be run by executing something like
 ```shell script
-java -cp fat.jar:tests.jar org.junit.platform.console.ConsoleLauncher -p ru.serge2nd
+java --enable-preview -cp fat.jar:tests.jar org.junit.platform.console.ConsoleLauncher -p ru.serge2nd
 ```
 Run the `org.junit.platform.console.ConsoleLauncher` without arguments to see the available options.
 
