@@ -8,7 +8,7 @@ import static java.lang.invoke.MethodHandles.lookup;
 import static ru.serge2nd.ObjectAssist.errNotInstantiable;
 
 public class Helpers {
-    private Helpers() { throw errNotInstantiable(lookup().lookupClass()); }
+    private Helpers() { throw errNotInstantiable(lookup()); }
 
     public static final int STRMAXLEN = 2000;
 

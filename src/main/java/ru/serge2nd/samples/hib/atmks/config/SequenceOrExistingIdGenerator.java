@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class SequenceOrExistingIdGenerator extends SequenceStyleGenerator {
     @Override
     public Serializable generate(SharedSessionContractImplementor session, Object e) throws HibernateException {
-        if (e instanceof Identifiable<?> i)
+        if (e instanceof Identifiable<?> i && i.getId() != null)
             return i.getId();
         return super.generate(session, e);
     }

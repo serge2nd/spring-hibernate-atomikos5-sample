@@ -15,10 +15,10 @@ import static java.util.Comparator.comparingInt;
 import static javax.persistence.LockModeType.OPTIMISTIC_FORCE_INCREMENT;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static ru.serge2nd.test.matcher.ArrayMatch.isArray;
-import static ru.serge2nd.test.matcher.AssertThat.assertThat;
-import static ru.serge2nd.test.matcher.CommonMatch.equalTo;
-import static ru.serge2nd.test.matcher.CommonMatch.fails;
+import static ru.serge2nd.test.match.ArrayMatch.isArray;
+import static ru.serge2nd.test.match.AssertThat.assertThat;
+import static ru.serge2nd.test.match.CommonMatch.equalTo;
+import static ru.serge2nd.test.match.CommonMatch.fails;
 
 abstract class AbstractDbTest {
     @Autowired TxSessionTemplate t;

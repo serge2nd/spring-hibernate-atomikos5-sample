@@ -1,5 +1,5 @@
 /*
- * The build script classpath and variables assumed to be used by multiple projects.
+ * Build script classpath and variables assumed to be used by multiple projects.
  */
 allprojects { buildscript {
     // Spring BOM coordinates to ease dependency management

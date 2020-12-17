@@ -2,7 +2,6 @@ import static java.lang.System.getenv
 
 repositories {
     mavenCentral()
-    mavenLocal()
     maven {
         url 'https://maven.pkg.github.com/serge2nd/maven-repo'
         credentials {
@@ -10,6 +9,7 @@ repositories {
             password = getenv('GITHUB_TOKEN')
         }
     }
+    mavenLocal()
 }
 dependencyManagement {
     imports { mavenBom springBom }

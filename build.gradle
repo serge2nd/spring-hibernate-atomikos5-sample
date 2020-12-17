@@ -19,5 +19,5 @@ apply from: 'dependencies.gradle'
 apply from: 'tasks.gradle'
 
 static extendClassPaths(classPaths, extension) {{
-    it -> classPaths.forEach {String cp -> it[cp] += extension}
+    it -> classPaths.each {cp -> it[cp] += extension}
 }}

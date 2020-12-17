@@ -42,13 +42,13 @@ public class DataConfig {
     final ConfigurableEnvironment env;
 
     /** XA data source properties */
-    @Bean Map<String, String> xaProps() { return asMap
-    (       "spring.jta.atomikos.datasource.xa-properties."
+    @Bean Map<String, String> xaProps() { return asMap(
+        "spring.jta.atomikos.datasource.xa-properties."
     );}
     /** JPA properties */
-    @Bean Map<String, String> jpaProps() { return properties
-    (       "javax.persistence."
-    ,       "hibernate."
+    @Bean Map<String, String> jpaProps() { return properties(
+        "javax.persistence.",
+        "hibernate."
     );}
 
     /** Persistent entity validator */

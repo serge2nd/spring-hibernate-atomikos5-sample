@@ -9,7 +9,6 @@ import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static java.lang.String.format;
 import static lombok.AccessLevel.PROTECTED;
 import static ru.serge2nd.samples.hib.atmks.data.Helpers.has;
 import static ru.serge2nd.samples.hib.atmks.data.RouteStop.sameIndexes;
@@ -58,14 +57,14 @@ public class Route implements Identifiable<Long> {
     //region Private helpers
 
     private static RouteStop doAddRouteStop(Route r, RouteStop rs) {
-        if (r.contains(rs)) throw new IllegalArgumentException(format("route stop %s exists", rs.getIndexNumber()));
+        if (r.contains(rs)) throw errRouteStopExists(rs);
         r.getRouteStops().add(rs); rs.setRoute(r); return rs;
     }
     private static RouteStop doRemoveRouteStop(Route r, RouteStop rs) {
         for (var it = r.getRouteStops().iterator(); it.hasNext();)
             if (sameIndexes(rs, it.next())) {
                 it.remove(); rs.setRoute(null); return rs; }
-        throw new IllegalArgumentException(format("route stop %s not found", rs.getIndexNumber()));
+        throw errRouteStopNotFound(rs);
     }
     //endregion
 
@@ -93,4 +92,7 @@ public class Route implements Identifiable<Long> {
             return route;
         }
     }
+
+    public static IllegalArgumentException errRouteStopExists(RouteStop rs) { return new IllegalArgumentException("route stop " + rs.getIndexNumber() + " exists"); }
+    public static IllegalArgumentException errRouteStopNotFound(RouteStop rs) { return new IllegalArgumentException("route stop " + rs.getIndexNumber() + " not found"); }
 }

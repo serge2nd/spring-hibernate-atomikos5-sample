@@ -1,10 +1,10 @@
-# spring-hibernate-atomikos5-sample [![Build Status](https://travis-ci.org/serge2nd/spring-hibernate-atomikos5-sample.svg?branch=master)](https://travis-ci.org/serge2nd/spring-hibernate-atomikos5-sample)
+# spring-hibernate-atomikos5-sample
 A demo Spring configuration consisting of the following parts:
 - A simple JPA persistence unit with Hibernate ORM/Validator
 - JTA transaction management (Atomikos)
 
 ## Requirements
-- JDK >=11 to build, JRE >=11 to run
+- JDK >=15 with the preview features enabled (`--enable-preview`).
 
 ## Build & Run
 **Note:** see the information in the [`init.d/README.MD`][100] before executing any Gradle tasks.

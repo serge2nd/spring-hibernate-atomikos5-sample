@@ -8,7 +8,7 @@ import static java.lang.invoke.MethodHandles.lookup;
 import static ru.serge2nd.ObjectAssist.errNotInstantiable;
 
 public class ConfigHelper {
-    private ConfigHelper() { throw errNotInstantiable(lookup().lookupClass()); }
+    private ConfigHelper() { throw errNotInstantiable(lookup()); }
 
     public static String[] propertyNames(PropertySource<?> ps) {
         return ps instanceof EnumerablePropertySource<?> eps ? eps.getPropertyNames() : EMPTY_STRING_ARRAY;
