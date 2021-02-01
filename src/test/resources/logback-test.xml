@@ -9,6 +9,7 @@
         <appender-ref ref="STDOUT"/>
     </root>
 
+    <logger name="org.hibernate.orm.tooling.schema" level="DEBUG"/>
     <logger name="org.hibernate" level="TRACE"/>
     <logger name="com.atomikos" level="TRACE"/>
 </configuration>

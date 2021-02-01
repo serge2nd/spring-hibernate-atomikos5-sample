@@ -4,7 +4,7 @@
 allprojects { buildscript {
     // Spring BOM coordinates to ease dependency management
     ext.springBomId      = 'org.springframework.boot:spring-boot-dependencies'
-    ext.springBomVersion = '2.4.0'
+    ext.springBomVersion = '2.4.2'
     ext.springBom        = "$springBomId:$springBomVersion"
 
     repositories {
@@ -12,7 +12,7 @@ allprojects { buildscript {
     }
     dependencies {
         // To enable dependency management and import a BOM
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
         // To build a fat JAR (with all dependencies)
         classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
     }

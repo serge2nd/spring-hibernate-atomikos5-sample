@@ -18,10 +18,13 @@
             <property name="hibernate.jdbc.time_zone"                value="UTC"/>
 
             <!-- Batch processing -->
-            <property name="hibernate.jdbc.fetch_size"          value="10"/>
-            <property name="hibernate.jdbc.batch_size"          value="50"/>
-            <property name="hibernate.default_batch_fetch_size" value="10"/>
-            <property name="hibernate.max_fetch_depth"          value="3"/>
+            <property name="hibernate.jdbc.fetch_size"           value="10"/>
+            <property name="hibernate.jdbc.batch_size"           value="50"/>
+            <property name="hibernate.default_batch_fetch_size"  value="10"/>
+            <property name="hibernate.max_fetch_depth"           value="3"/>
+            <property name="hibernate.order_inserts"             value="true"/>
+            <property name="hibernate.order_updates"             value="true"/>
+            <property name="hibernate.jdbc.batch_versioned_data" value="true"/>
 
             <!-- Transactions -->
             <property name="hibernate.current_session_context_class"       value="jta"/>
@@ -29,9 +32,10 @@
             <property name="hibernate.transaction.flush_before_completion" value="false"/>
 
             <!-- Logging -->
-            <property name="hibernate.show_sql"         value="true"/>
-            <property name="hibernate.format_sql"       value="true"/>
-            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.generate_statistics" value="true"/>
+            <property name="hibernate.show_sql"            value="true"/>
+            <property name="hibernate.format_sql"          value="true"/>
+            <property name="hibernate.use_sql_comments"    value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

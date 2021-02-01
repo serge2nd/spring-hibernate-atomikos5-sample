@@ -29,10 +29,10 @@ public class TxSessionTemplate {
         cfg.accept(emTmpl, txTmpl);
     }
 
-    public <R> R fromTxSession(BiFunction<Session, TransactionStatus, R> action) {
+    public <R> R from(BiFunction<Session, TransactionStatus, R> action) {
         return txTmpl.execute(tx -> emTmpl.execute(session -> action.apply(session, tx)));
     }
-    public void withTxSession(BiConsumer<Session, TransactionStatus> action) {
+    public void with(BiConsumer<Session, TransactionStatus> action) {
         txTmpl.execute(tx -> emTmpl.execute(session -> {
             action.accept(session, tx);
             return null;
