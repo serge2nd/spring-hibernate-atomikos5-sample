@@ -1,34 +1,26 @@
-import static java.lang.System.getenv
-
 repositories {
     mavenCentral()
-    maven {
-        url 'https://maven.pkg.github.com/serge2nd/maven-repo'
-        credentials {
-            username = 'serge2nd'
-            password = getenv('GITHUB_TOKEN')
-        }
-    }
+    maven {url 'https://serge2nd.jfrog.io/artifactory/maven'}
     mavenLocal()
 }
 dependencyManagement {
     imports {
         mavenBom springBom
-        mavenBom "com.oracle.database.jdbc:ojdbc-bom:$extOjdbcBomVersion"
+        mavenBom "com.oracle.database.jdbc:ojdbc-bom:$extOjdbcVersion"
     }
 }
 configurations {
     testJar
 }
 dependencies {
-    implementation 'ru.serge2nd:bunch-of-crafts:0.9.0-SNAPSHOT',
+    implementation "ru.serge2nd:bunch-of-crafts:$extCraftsBunchVersion",
             'org.springframework.data:spring-data-jpa',
             'org.hibernate:hibernate-core',
             'org.hibernate.validator:hibernate-validator',
             'com.atomikos:transactions-jdbc',
             'com.atomikos:transactions-jta',
             'ch.qos.logback:logback-classic'
-    testImplementation 'ru.serge2nd:test-guns:0.9.0-SNAPSHOT',
+    testImplementation "ru.serge2nd:test-guns:$extTestGunsVersion",
             'org.springframework:spring-test',
             'org.junit.jupiter:junit-jupiter-engine',
             'org.junit.jupiter:junit-jupiter-params',

@@ -1,8 +1,10 @@
 ext {
     extJavaVersion = 15
     extJavaCompilerArgs = ['--enable-preview']
-    extJvmArgs = ['--enable-preview']
-    extOjdbcBomVersion = '21.1.0.0'
+    extJvmArgs          = ['--enable-preview']
+    extTestGunsVersion     = '0.9.0'
+    extCraftsBunchVersion  = '0.9.0'
+    extOjdbcVersion        = '21.1.0.0'
     extJunitConsoleVersion = '1.7.1'
     extTests = ['OracleDbTest', 'PostgresDbTest']
 }

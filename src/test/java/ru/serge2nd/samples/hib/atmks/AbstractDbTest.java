@@ -17,9 +17,9 @@ import static javax.persistence.LockModeType.OPTIMISTIC_FORCE_INCREMENT;
 import static ru.serge2nd.ObjectAssist.throwSneaky;
 import static ru.serge2nd.test.match.ArrayMatch.items;
 import static ru.serge2nd.test.match.AssertThat.assertThat;
-import static ru.serge2nd.test.match.CommonMatch.equalTo;
-import static ru.serge2nd.test.match.CommonMatch.fails;
-import static ru.serge2nd.test.match.CommonMatch.nullValue;
+import static ru.serge2nd.test.match.CoreMatch.equalTo;
+import static ru.serge2nd.test.match.CoreMatch.fails;
+import static ru.serge2nd.test.match.CoreMatch.nullRef;
 
 abstract class AbstractDbTest {
     @Autowired TxSessionTemplate $;
@@ -113,7 +113,9 @@ abstract class AbstractDbTest {
             session.merge(Station.builder().id(id).name("not to save").build());
             sleep(2200);
         }), fails(UnexpectedRollbackException.class),
-        $.<Station>from((session, tx)->session.find(Station.class, id)), nullValue("no added row"));
+        $.<Station>from((session, tx) ->
+            session.find(Station.class, id)
+        ), nullRef("no added row"));
     }
 
     static void sleep(long ms) { try {Thread.sleep(ms);} catch(Throwable t) {throwSneaky(t);} }
